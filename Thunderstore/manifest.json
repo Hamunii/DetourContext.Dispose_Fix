@@ -1,5 +1,5 @@
 {
-    "name": "DetourContext.Dispose_Fix",
+    "name": "DetourContext_Dispose_Fix",
     "version_number": "1.0.0",
     "website_url": "https://github.com/Hamunii/DetourContext.Dispose_Fix",
     "description": "A BepInEx patcher to fix MonoMod.RuntimeDetour.DetourContext.Dispose not working.",
