@@ -15,4 +15,4 @@ using(new DetourContext(){ Priority = 100 })
 On.StartOfRound.Awake += Hook_1;
 ```
 The `DetourContext` wouldn't dispose of itself, and `Hook_1` would run before `Hook_2` because it also got applied to it.  
-With this patch, the `DetourContext` will dispose of itself and `Hook_2` will run before `Hook_1` like it should.
+With this patcher, the `DetourContext` will dispose of itself and `Hook_2` will run before `Hook_1` like it should.
