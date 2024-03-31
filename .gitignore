@@ -44,4 +44,4 @@ Backup/
 /Properties
 UpgradeLog.htm
 
-/DetourContext_Dispose_Fix.csproj.user
+!/DetourContext_Dispose_Fix.template.csproj.user
