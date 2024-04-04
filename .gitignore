@@ -44,4 +44,7 @@ Backup/
 /Properties
 UpgradeLog.htm
 
+# Thunderstore Stuff
+Thunderstore/Packages/*.zip
+
 !/DetourContext_Dispose_Fix.template.csproj.user

@@ -5,7 +5,9 @@
         <AssemblyName>Hamunii.DetourContext.Dispose_Fix</AssemblyName>
         <Product>DetourContext.Dispose_Fix</Product>
         <!-- Change to whatever version you're currently on. -->
-        <Version>1.0.0</Version>
+        <Version>1.0.2</Version>
+
+        <ThunderstoreTeam>Hamunii</ThunderstoreTeam>
     </PropertyGroup>
 
     <!-- Project Properties -->
@@ -49,4 +51,10 @@
     <ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">
         <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="all"/>
     </ItemGroup>
+
+    <!-- Build our Thunderstore package when making a release build. This does not publish our package. -->
+    <!-- For more information about tcli, see https://github.com/thunderstore-io/thunderstore-cli/wiki -->
+    <Target Name="PackThunderstore" AfterTargets="PostBuildEvent" Condition="$(Configuration) == 'Release'">
+        <Exec Command="dotnet tcli build --config-path &quot;$(ProjectDir)Thunderstore/thunderstore.toml&quot; --package-version $(Version) --package-name DetourContext_Dispose_Fix --package-namespace $(ThunderstoreTeam)"  />
+    </Target>
 </Project>
