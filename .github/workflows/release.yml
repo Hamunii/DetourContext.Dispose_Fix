@@ -15,7 +15,9 @@ jobs:
         with:
           dotnet-version: "8.x"
 
-      - name: Restore and Build
+      - name: Restore, Build and Publish to TS
+        env:
+          TCLI_AUTH_TOKEN: ${{ secrets.THUNDERSTORE_API_TOKEN }}
         run: |
           dotnet restore --locked-mode
           dotnet tool restore
@@ -26,9 +28,3 @@ jobs:
         with:
           name: thunderstore-build
           path: ./Thunderstore/Packages/*.zip
-
-      - name: Publish to Thunderstore
-        env:
-          TCLI_AUTH_TOKEN: ${{ secrets.THUNDERSTORE_API_TOKEN }}
-        run: |
-          dotnet tcli publish --config-path ./Thunderstore/thunderstore.toml --file ./Thunderstore/Packages/*.zip
