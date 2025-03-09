@@ -1,0 +1,37 @@
+name: Release
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Dotnet
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.x"
+
+      - name: Restore and Build
+        run: |
+          dotnet restore --locked-mode
+          dotnet tool restore
+          dotnet pack -c Release
+
+      - name: Upload Thunderstore Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: thunderstore-build
+          path: ./Thunderstore/Packages/*.zip
+
+      - name: Publish to Thunderstore
+        env:
+          TCLI_AUTH_TOKEN: ${{ secrets.THUNDERSTORE_API_TOKEN }}
+        run: |
+          ls ./Thunderstore/Packages/
+
+# dotnet tcli publish --config-path ./Thunderstore/thunderstore.toml --file ./Thunderstore/Packages/*.zip
