@@ -4,8 +4,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
-    name: build
+  publish:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -32,6 +31,4 @@ jobs:
         env:
           TCLI_AUTH_TOKEN: ${{ secrets.THUNDERSTORE_API_TOKEN }}
         run: |
-          ls ./Thunderstore/Packages/
-
-# dotnet tcli publish --config-path ./Thunderstore/thunderstore.toml --file ./Thunderstore/Packages/*.zip
+          dotnet tcli publish --config-path ./Thunderstore/thunderstore.toml --file ./Thunderstore/Packages/*.zip
