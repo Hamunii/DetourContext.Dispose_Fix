@@ -21,7 +21,7 @@ source = "./CHANGELOG.md"
 target = "/"
 
 [[build.copy]]
-source = "../bin/Release/netstandard2.1/Hamunii.DetourContext.Dispose_Fix.dll"
+source = "../bin/Release/netstandard2.0/Hamunii.DetourContext.Dispose_Fix.dll"
 target = "/patchers/"
 
 [publish]
